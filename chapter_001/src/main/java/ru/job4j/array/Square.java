@@ -8,9 +8,10 @@ package ru.job4j.array;
 public class Square {
     /**
      * Calculates square of numbers from 1 to bound.
+     *
      * @param bound number in array on which calculation should be stopped.
      * @return array.
-     * */
+     */
     public int[] calculate(int bound) {
         int[] rst = new int[bound];
         // заполнить массив через цикл элементами от 1 до bound возведенными в квадрат

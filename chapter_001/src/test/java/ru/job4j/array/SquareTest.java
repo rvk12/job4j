@@ -14,7 +14,7 @@ public class SquareTest {
 
     /**
      * Test method when bound equals 3
-     * */
+     */
     @Test
     public void whenBound3Then149() {
         int bound = 3;
@@ -26,7 +26,7 @@ public class SquareTest {
 
     /**
      * Test method when bound equals 3
-     * */
+     */
     @Test
     public void whenBound5Then1491625() {
         int bound = 5;
@@ -38,7 +38,7 @@ public class SquareTest {
 
     /**
      * Test method when bound equals 3
-     * */
+     */
     @Test
     public void whenBound7Then14916253649() {
         int bound = 7;
