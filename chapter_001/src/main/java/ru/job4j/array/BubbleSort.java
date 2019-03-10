@@ -1,8 +1,6 @@
 package ru.job4j.array;
 
 
-import java.util.Arrays;
-
 /**
  * @author rvk12
  * @version $Id$
