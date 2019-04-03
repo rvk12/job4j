@@ -15,7 +15,7 @@ public class FindLoop {
      * @return index of found element
      */
     public int indexOf(int[] data, int el) {
-        int rst = -1; // if element is not found then return -1
+        int rst = -1;
         for (int index = 0; index < data.length; index++) {
             if (data[index] == el) {
                 rst = index;
