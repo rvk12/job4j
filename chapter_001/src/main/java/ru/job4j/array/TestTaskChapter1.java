@@ -31,7 +31,6 @@ public class TestTaskChapter1 {
                 secondArrIndex++;
             }
         }
-
         return merged;
     }
 }
