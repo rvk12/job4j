@@ -36,7 +36,7 @@ public class StartUI {
     /**
      * Получение данных от пользователя.
      */
-    private final ConsoleInput input;
+    private final Input input;
 
     /**
      * Хранилище заявок.
@@ -49,7 +49,7 @@ public class StartUI {
      * @param input   ввод данных.
      * @param tracker хранилище заявок.
      */
-    public StartUI(ConsoleInput input, Tracker tracker) {
+    public StartUI(Input input, Tracker tracker) {
         this.input = input;
         this.tracker = tracker;
     }
@@ -93,12 +93,12 @@ public class StartUI {
      * Метод реализует добавленяи новый заявки в хранилище.
      */
     private void createItem() {
-        this.input.print("------------ Adding new request --------------");
+        System.out.println("------------ Adding new request --------------");
         String name = this.input.ask("Enter name of request: ");
         String desc = this.input.ask("Enter description of request: ");
         Item item = new Item(name, desc);
         this.tracker.add(item);
-        this.input.print("------------ New request with ID " + item.getId() + " was created.-----------");
+        System.out.println("------------ New request with ID " + item.getId() + " was created.-----------");
     }
 
     /**
@@ -106,12 +106,12 @@ public class StartUI {
      */
     private void printAllItems() {
         Item[] items = this.tracker.findAll();
-        this.input.print("------------ Found " + items.length + " requests --------------");
+        System.out.println("------------ Found " + items.length + " requests --------------");
         for (int i = 0; i < items.length; i++) {
-            this.input.print("Id: " + items[i].getId());
-            this.input.print("Name: " + items[i].getName());
-            this.input.print("Desc: " + items[i].getDesc());
-            this.input.print("----------------");
+            System.out.println("Id: " + items[i].getId());
+            System.out.println("Name: " + items[i].getName());
+            System.out.println("Desc: " + items[i].getDesc());
+            System.out.println("----------------");
         }
     }
 
@@ -119,7 +119,7 @@ public class StartUI {
      * Метод редактирует заявку по id.
      */
     private void editItem() {
-        this.input.print("------------ Editing request --------------");
+        System.out.println("------------ Editing request --------------");
         String id = this.input.ask("Enter id of request: ");
         Item edit = this.tracker.findById(id);
         if (edit != null) {
@@ -129,10 +129,10 @@ public class StartUI {
             edit.setDesc(desc);
             boolean success = this.tracker.replace(id, edit);
             if (!success) {
-                this.input.print("There are issues with updating request.");
+                System.out.println("There are issues with updating request.");
             }
         } else {
-            this.input.print("Request with such ID not found.");
+            System.out.println("Request with such ID not found.");
         }
     }
 
@@ -143,7 +143,7 @@ public class StartUI {
         String id = this.input.ask("Enter id of request: ");
         boolean success = this.tracker.delete(id);
         if (!success) {
-            this.input.print("There are issues with deleting request.");
+            System.out.println("There are issues with deleting request.");
         }
     }
 
@@ -153,11 +153,15 @@ public class StartUI {
     private void findItemById() {
         String id = this.input.ask("Enter id of request: ");
         Item found = this.tracker.findById(id);
-        this.input.print("------------ Found request --------------");
-        this.input.print("Id: " + found.getId());
-        this.input.print("Name: " + found.getName());
-        this.input.print("Desc: " + found.getDesc());
-        this.input.print("Time: " + found.getTime());
+        System.out.println("------------ Found request --------------");
+        if (found != null) {
+            System.out.println("Id: " + found.getId());
+            System.out.println("Name: " + found.getName());
+            System.out.println("Desc: " + found.getDesc());
+            System.out.println("Time: " + found.getTime());
+        } else {
+            System.out.println("No results found.");
+        }
     }
 
     /**
@@ -166,12 +170,12 @@ public class StartUI {
     private void findItemsByName() {
         String name = this.input.ask("Enter name of request: ");
         Item[] found = this.tracker.findByName(name);
-        this.input.print("------------ Found " + found.length + " requests --------------");
+        System.out.println("------------ Found " + found.length + " requests --------------");
         for (int i = 0; i < found.length; i++) {
-            this.input.print("Id: " + found[i].getId());
-            this.input.print("Name: " + found[i].getName());
-            this.input.print("Desc: " + found[i].getDesc());
-            this.input.print("----------------");
+            System.out.println("Id: " + found[i].getId());
+            System.out.println("Name: " + found[i].getName());
+            System.out.println("Desc: " + found[i].getDesc());
+            System.out.println("----------------");
         }
     }
 
