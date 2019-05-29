@@ -33,6 +33,24 @@ public class StartUI {
      * Константа для выхода из цикла.
      */
     private static final String EXIT = "6";
+
+    private static final String MENU = new StringBuilder()
+            .append("-------------- Menu. -------------")
+            .append(System.lineSeparator())
+            .append("0. Add new item")
+            .append(System.lineSeparator())
+            .append("1. Show all items")
+            .append(System.lineSeparator())
+            .append("2. Edit item")
+            .append(System.lineSeparator())
+            .append("3. Delete item")
+            .append(System.lineSeparator())
+            .append("4. Find item by ID")
+            .append(System.lineSeparator())
+            .append("5. Find items by name")
+            .append(System.lineSeparator())
+            .append("6. Exit Program")
+            .toString();
     /**
      * Получение данных от пользователя.
      */
@@ -55,9 +73,7 @@ public class StartUI {
     }
 
     /**
-     * Запускт программы.
-     *
-     * @param args
+     * Запуск программы.
      */
     public static void main(String[] args) {
         new StartUI(new ConsoleInput(), new Tracker()).init();
@@ -183,13 +199,6 @@ public class StartUI {
      * Метод показывающий меню.
      */
     private void showMenu() {
-        System.out.print("-------------- Menu. -------------\n"
-                + "0. Add new item\n"
-                + "1. Show all items\n"
-                + "2. Edit item\n"
-                + "3. Delete item\n"
-                + "4. Find item by ID\n"
-                + "5. Find items by name\n"
-                + "6. Exit Program\n");
+        System.out.println(MENU);
     }
 }

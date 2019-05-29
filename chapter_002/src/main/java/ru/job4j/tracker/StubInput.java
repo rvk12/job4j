@@ -23,7 +23,7 @@ public class StubInput implements Input {
     }
 
     /**
-     * @param question
+     * @param question строка которая появится на экране
      * @return value
      */
     @Override
