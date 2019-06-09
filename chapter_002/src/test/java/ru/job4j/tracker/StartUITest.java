@@ -19,21 +19,19 @@ public class StartUITest {
     private final PrintStream stdout = System.out;
     private final ByteArrayOutputStream out = new ByteArrayOutputStream();
     private static final String MENU = new StringBuilder()
-            .append("-------------- Menu. -------------")
+            .append("0. Add new item.")
             .append(System.lineSeparator())
-            .append("0. Add new item")
+            .append("1. Show all items.")
             .append(System.lineSeparator())
-            .append("1. Show all items")
+            .append("2. Edit item.")
             .append(System.lineSeparator())
-            .append("2. Edit item")
+            .append("3. Delete item.")
             .append(System.lineSeparator())
-            .append("3. Delete item")
+            .append("4. Find item by ID.")
             .append(System.lineSeparator())
-            .append("4. Find item by ID")
+            .append("5. Find items by name.")
             .append(System.lineSeparator())
-            .append("5. Find items by name")
-            .append(System.lineSeparator())
-            .append("6. Exit Program")
+            .append("6. Exit program.")
             .append(System.lineSeparator())
             .toString();
 
@@ -52,7 +50,7 @@ public class StartUITest {
     @Test
     public void whenUserAddItemThenTrackerHasNewItemWithSameName() {
         Tracker tracker = new Tracker();
-        Input input = new StubInput(new String[]{"0", "test name", "desc", "6"});
+        Input input = new StubInput(new String[]{"0", "test name", "desc", "y"});
         new StartUI(input, tracker).init();
         assertThat(tracker.findAll()[0].getName(), is("test name"));
     }
@@ -61,7 +59,7 @@ public class StartUITest {
     public void whenUpdateThenTrackerHasUpdatedValue() {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name", "desc"));
-        Input input = new StubInput(new String[]{"2", item.getId(), "test replace", "заменили заявку", "6"});
+        Input input = new StubInput(new String[]{"2", item.getId(), "test replace", "заменили заявку", "y"});
         new StartUI(input, tracker).init();
         assertThat(tracker.findById(item.getId()).getName(), is("test replace"));
     }
@@ -70,7 +68,7 @@ public class StartUITest {
     public void whenDeleteThenItemIsDeletedFromTracker() {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name delete", "desc"));
-        Input input = new StubInput(new String[]{"3", item.getId(), "6"});
+        Input input = new StubInput(new String[]{"3", item.getId(), "y"});
         new StartUI(input, tracker).init();
         assertThat(tracker.findById(item.getId()), is(nullValue()));
     }
@@ -80,7 +78,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
         Item item = tracker.add(new Item("test name search", "desc"));
         String id = item.getId();
-        Input input = new StubInput(new String[]{"4", id, "6"});
+        Input input = new StubInput(new String[]{"4", id, "y"});
         new StartUI(input, tracker).init();
         assertThat(tracker.findById(id).getId(), is(id));
     }
@@ -93,7 +91,7 @@ public class StartUITest {
         item[0] = tracker.add(new Item("test name search", "desc"));
         item[1] = tracker.add(new Item(name, "desc"));
         String id = item[1].getId();
-        Input input = new StubInput(new String[]{"5", name, "6"});
+        Input input = new StubInput(new String[]{"5", name, "y"});
         new StartUI(input, tracker).init();
         Assert.assertThat(
                 this.out.toString(),
@@ -110,7 +108,6 @@ public class StartUITest {
                         .append(System.lineSeparator())
                         .append("----------------")
                         .append(System.lineSeparator())
-                        .append(MENU)
                         .toString())
         );
     }
@@ -125,7 +122,7 @@ public class StartUITest {
         item[1] = tracker.add(new Item(name2, "desc2"));
         String id1 = item[0].getId();
         String id2 = item[1].getId();
-        Input input = new StubInput(new String[]{"1", "6"});
+        Input input = new StubInput(new String[]{"1", "y"});
         new StartUI(input, tracker).init();
         Assert.assertThat(
                 this.out.toString(),
@@ -151,7 +148,6 @@ public class StartUITest {
                         .append(System.lineSeparator())
                         .append("----------------")
                         .append(System.lineSeparator())
-                        .append(MENU)
                         .toString())
         );
     }
