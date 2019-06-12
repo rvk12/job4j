@@ -1,9 +1,9 @@
 package ru.job4j.tracker;
 
-public class AddItem implements UserAction {
-    @Override
-    public String key() {
-        return "ADD";
+public class AddItem extends BaseAction {
+
+    public AddItem(int key, String name) {
+        super(key, name);
     }
 
     /**
@@ -19,10 +19,5 @@ public class AddItem implements UserAction {
         System.out.println("------------ New Item with Id : " + item.getId());
         System.out.println("------------ New Item with Name : " + item.getName());
         System.out.println("------------ New Item with Description : " + item.getDesc());
-    }
-
-    @Override
-    public String info() {
-        return "0. Add new item.";
     }
 }
