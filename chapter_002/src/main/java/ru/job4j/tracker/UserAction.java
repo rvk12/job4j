@@ -8,7 +8,7 @@ public interface UserAction {
      * Метод возвращает ключ опции.
      * @return ключ
      */
-    String key();
+    int key();
     /**
      * Основной метод.
      * @param input объект типа Input
