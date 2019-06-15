@@ -1,9 +1,9 @@
 package ru.job4j.tracker;
 
-public class ShowItems implements UserAction {
-    @Override
-    public String key() {
-        return "SHOW_ALL";
+public class ShowItems extends BaseAction {
+
+    public ShowItems(int key, String name) {
+        super(key, name);
     }
 
     /**
@@ -21,8 +21,4 @@ public class ShowItems implements UserAction {
         }
     }
 
-    @Override
-    public String info() {
-        return "1. Show all items.";
-    }
 }

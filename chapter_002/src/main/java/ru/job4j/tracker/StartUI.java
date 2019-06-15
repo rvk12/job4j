@@ -18,6 +18,10 @@ public class StartUI {
      * массив с возможными ключами меню
      */
     private int[] ranges = new int[]{0, 1, 2, 3, 4, 5, 6};
+    /**
+     * статус программы
+     */
+    private boolean working = true;
 
     /**
      * Конструтор инициализирующий поля.
@@ -43,11 +47,15 @@ public class StartUI {
      */
     public void init() {
         MenuTracker menu = new MenuTracker(this.input, this.tracker);
-        menu.fillActions();
+        menu.fillActions(this);
         do {
             menu.show();
             menu.select(input.ask("Select: ", ranges));
-        } while (!"y".equals(this.input.ask("Exit?(y): ")));
+        } while (working);
 
+    }
+
+    public void stop() {
+        this.working = false;
     }
 }
