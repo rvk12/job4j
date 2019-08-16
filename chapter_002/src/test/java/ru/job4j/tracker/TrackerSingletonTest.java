@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 public class TrackerSingletonTest {
     @Test
@@ -15,7 +16,7 @@ public class TrackerSingletonTest {
         TrackerSingleEnum trackerSecond = TrackerSingleEnum.INSTANCE;
         Item result = trackerSecond.getTracker().findById(item.getId());
         assertThat(result.getName(), is(item.getName()));
-        assertThat(trackerFirst, is(trackerSecond));
+        assertTrue(trackerFirst == trackerSecond);
     }
 
     @Test
@@ -27,7 +28,7 @@ public class TrackerSingletonTest {
         Tracker trackerSecond = TrackerSingleStatic.getInstance();
         Item result = trackerSecond.findById(item.getId());
         assertThat(result.getName(), is(item.getName()));
-        assertThat(trackerFirst, is(trackerSecond));
+        assertTrue(trackerFirst == trackerSecond);
     }
 
     @Test
@@ -39,7 +40,7 @@ public class TrackerSingletonTest {
         Tracker trackerSecond = TrackerSingleStaticFinalField.getInstance();
         Item result = trackerSecond.findById(item.getId());
         assertThat(result.getName(), is(item.getName()));
-        assertThat(trackerFirst, is(trackerSecond));
+        assertTrue(trackerFirst == trackerSecond);
     }
 
     @Test
@@ -51,7 +52,7 @@ public class TrackerSingletonTest {
         Tracker trackerSecond = TrackerSingleStaticFinalClass.getInstance();
         Item result = trackerSecond.findById(item.getId());
         assertThat(result.getName(), is(item.getName()));
-        assertThat(trackerFirst, is(trackerSecond));
+        assertTrue(trackerFirst == trackerSecond);
     }
 
 }
