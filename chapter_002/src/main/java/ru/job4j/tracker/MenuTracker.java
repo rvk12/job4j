@@ -41,7 +41,7 @@ public class MenuTracker {
     /**
      * Метод заполняет массив.
      */
-public void fillActions(StartUI ui) {
+    public void fillActions(StartUI ui) {
         this.actions.add(0, new AddItem(0, "Add new item."));
         this.actions.add(1, new ShowItems(1, "Show all items."));
         this.actions.add(2, new UpdateItem(2, "Edit item."));
