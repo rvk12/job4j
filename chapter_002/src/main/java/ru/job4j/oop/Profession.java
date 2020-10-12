@@ -1,4 +1,4 @@
-package ru.job4j.OOP;
+package ru.job4j.oop;
 
 /**
  * @author rvk12

@@ -1,11 +1,11 @@
-package ru.job4j.OOP;
+package ru.job4j.oop;
 
 /**
  * @author rvk12
  * @version $Id$
  * @since 0.1
  */
-public class Builder extends Engineer{
+public class Builder extends Engineer {
     private String qualification;
 
     public String getQualification() {

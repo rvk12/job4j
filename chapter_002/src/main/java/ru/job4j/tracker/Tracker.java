@@ -41,19 +41,20 @@ public class Tracker {
     /**
      * Метод обновляющий ячейку в списке новым объектом
      *
-     * @param id поиск объекта для замены по атрибуту id объекта
+     * @param id   поиск объекта для замены по атрибуту id объекта
      * @param item объект на который будет заменен старый объект
      * @return возвращает true, если замена произошла
      */
     public boolean replace(String id, Item item) {
         boolean result = false;
         int position = this.items.size();
-        for (int i = 0; i != position; i++)
+        for (int i = 0; i != position; i++) {
             if (this.items.get(i) != null && this.items.get(i).getId().equals(id)) {
                 this.items.set(i, item);
                 result = true;
                 break;
             }
+        }
         return result;
     }
 
@@ -65,8 +66,8 @@ public class Tracker {
      */
     public boolean delete(String id) {
         boolean result = false;
-        for (Item item : this.items){
-            if(item != null && item.getId().equals(id)){
+        for (Item item : this.items) {
+            if (item != null && item.getId().equals(id)) {
                 this.items.remove(item);
                 result = true;
                 break;
@@ -88,8 +89,8 @@ public class Tracker {
      */
     public List<Item> findByName(String key) {
         List<Item> found = new ArrayList<>();
-        for (Item item : this.items){
-            if (item != null && item.getName().equals(key)){
+        for (Item item : this.items) {
+            if (item != null && item.getName().equals(key)) {
                 found.add(item);
             }
         }
@@ -99,7 +100,7 @@ public class Tracker {
     /**
      * @param id атрибут id объектов по которому выбираются элементы
      * @return элемент у которого совпадает id
-     * */
+     */
     public Item findById(String id) {
         Item found = null;
         for (Item item : this.items) {

@@ -11,7 +11,7 @@ public enum TrackerSingleEnum {
     INSTANCE;
     private Tracker tracker = new Tracker();
 
-    public Tracker getTracker(){
+    public Tracker getTracker() {
         return tracker;
     }
 
