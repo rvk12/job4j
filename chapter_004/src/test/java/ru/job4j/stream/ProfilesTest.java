@@ -20,4 +20,17 @@ public class ProfilesTest {
                 , new Address("Penza","Mira",41,23));
         assertThat(new Profiles().collect(profiles), is(expected));
     }
+
+    @Test
+    public void whenCollectDuplicatesReturnAddressesWithoutDuplicatesAndSorted() {
+        List<Profile> profiles = new ArrayList<Profile>();
+        profiles.add(new Profile(new Address("Orsk","Lenin",5,23)));
+        profiles.add(new Profile(new Address("Penza","Mira",41,23)));
+        profiles.add(new Profile(new Address("Penza","Mira",41,23)));
+        profiles.add(new Profile(new Address("Moskva","Lermontova",25,1)));
+        List<Address> expected = Arrays.asList(new Address("Moskva","Lermontova",25,1)
+                , new Address("Orsk", "Lenin", 5, 23)
+                , new Address("Penza","Mira",41,23));
+        assertThat(new Profiles().collect(profiles), is(expected));
+    }
 }
